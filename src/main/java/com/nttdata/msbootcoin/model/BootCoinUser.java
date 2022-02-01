@@ -13,8 +13,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @Document(collection="BootCoinUser")
 public class BootCoinUser {
-    private String type;
-
     @Id
     private String id= UUID.randomUUID().toString();
 
