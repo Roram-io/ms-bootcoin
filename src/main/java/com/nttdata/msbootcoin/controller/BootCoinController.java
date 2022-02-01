@@ -18,23 +18,27 @@ public class BootCoinController {
 
     Logger log = LoggerFactory.getLogger(BootCoinController.class);
 
-    @PostMapping
-    public Mono<BootCoinUser> createBootCoinUser(BootCoinUser bootCoinUser){
+    @PostMapping("/createUser")
+    public Mono<BootCoinUser> createBootCoinUser(@RequestBody BootCoinUser bootCoinUser){
+        log.info("Calling service for creating a user for BootCoin");
         return bootCoinService.createBootCoinUser(bootCoinUser);
     }
 
-    @PutMapping
-    public Mono<BootCoinUser> updateBootCoinUser(BootCoinUser bootCoinUser){
+    @PutMapping("/update")
+    public Mono<BootCoinUser> updateBootCoinUser(@RequestBody BootCoinUser bootCoinUser){
+        log.info("Calling service for updating user");
         return bootCoinService.updateBootCoinUser(bootCoinUser);
     }
 
-    @GetMapping
-    public Mono<BootCoinUser> getBootCoinUser(String id){
+    @GetMapping("/getUser/{id}")
+    public Mono<BootCoinUser> getBootCoinUser(@PathVariable("id") String id){
+        log.info("Calling service for getting a user");
         return bootCoinService.getBootCoinUser(id);
     }
 
-    @PostMapping
-    public Mono<BootCoinTransaction> handleTransaction(BootCoinTransaction bootCoinTransaction){
+    @PostMapping("/handletransaction")
+    public Mono<BootCoinTransaction> handleTransaction(@RequestBody BootCoinTransaction bootCoinTransaction){
+        log.info("Calling service for handling transaction");
         return bootCoinService.handleTransaction(bootCoinTransaction);
     }
 }
